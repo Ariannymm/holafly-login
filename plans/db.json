@@ -1,0 +1,135 @@
+{
+    "users": [
+      {
+        "id": 1,
+        "name": "Noris Mendoza",
+        "email": "noris.mendoza@example.com",
+        "password": "070570"
+      },
+      {
+        "id": 2,
+        "name": "Nestor Jerez",
+        "email": "nestor.jerez@example.com",
+        "password": "091094"
+      },
+      {
+        "id": 3,
+        "name": "Ricardo Cordero",
+        "email": "ricardo.cordero@example.com",
+        "password": "120697"
+      }
+    ],
+    "cards": [
+        {
+          "id": 10,
+          "userId": 1,
+          "plan": "10 days plan, 12GB",
+          "dateStart": "2023-01-18",
+          "dateEnd": "2023-01-28",
+          "status": "Active",
+          "comsumption": {
+            "totalComsumption": 12582912.0
+          },
+          "flag": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Flag_of_Colombia.svg/1200px-Flag_of_Colombia.svg.png",
+          "country": "Colombia"
+        },
+        {
+          "id": 11,
+          "userId": 2,
+          "plan": "5 days plan, 5GB",
+          "dateStart": "2023-01-18",
+          "dateEnd": "2023-01-23",
+          "status": "Active",
+          "comsumption": {
+            "totalComsumption": 4125200.4
+          },
+          "flag": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Flag_of_Mexico.svg/300px-Flag_of_Mexico.svg.png",
+          "country": "México"
+        },
+        {
+          "id": 12,
+          "userId": 3,
+          "plan": "1 week plan, 8GB",
+          "dateStart": "2023-01-15",
+          "dateEnd": "2023-01-22",
+          "status": "Active",
+          "comsumption": {
+            "totalComsumption": 7053112.7
+          },
+          "flag": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Flag_of_Argentina.svg/300px-Flag_of_Argentina.svg.png",
+          "country": "Argentina"
+        },
+        {
+          "id": 13,
+          "userId": 1,
+          "plan": "2 days plan, 2GB",
+          "dateStart": "2023-01-30",
+          "dateEnd": "2023-02-01",
+          "status": "Pending",
+          "comsumption": {
+            "totalComsumption": 2048000
+          },
+          "flag": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Flag_of_Peru.svg/1200px-Flag_of_Peru.svg.png",
+          "country": "Perú"
+        },
+        {
+          "id": 14,
+          "userId": 2,
+          "plan": "20 days plan, 20GB",
+          "dateStart": "2023-02-01",
+          "dateEnd": "2023-02-21",
+          "status": "Pending",
+          "comsumption": {
+            "totalComsumption": 20000087.2
+          },
+          "flag": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Flag_of_Chile.svg/300px-Flag_of_Chile.svg.png",
+          "country": "Chile"
+        },
+        {
+          "id": 15,
+          "userId": 3,
+          "plan": "2 weeks plan, 14GB",
+          "dateStart": "2023-01-30",
+          "dateEnd": "2023-02-15",
+          "status": "Pending",
+          "comsumption": {
+            "totalComsumption": 14000480.4
+          },
+          "flag": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/300px-Flag_of_the_United_States.svg.png",
+          "country": "USA"
+        },
+        {
+          "id": 16,
+          "userId": 1,
+          "plan": "2 days plan, 2GB",
+          "dateStart": "2023-01-01",
+          "dateEnd": "2023-07-01",
+          "status": "Expired",
+          "comsumption": null,
+          "flag": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Flag_of_Japan.svg/300px-Flag_of_Japan.svg.png",
+          "country": "Japón"
+        },
+        {
+          "id": 17,
+          "userId": 2,
+          "plan": "2 days plan, 1.4GB",
+          "dateStart": "2023-01-01",
+          "dateEnd": "2023-07-01",
+          "status": "Expired",
+          "comsumption": null,
+          "flag": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Flag_of_Spain.svg/1200px-Flag_of_Spain.svg.png",
+          "country": "España"
+        },
+        {
+          "id": 18,
+          "userId": 3,
+          "plan": "1 Month plan, 25GB",
+          "dateStart": "2023-01-01",
+          "dateEnd": "2023-07-01",
+          "status": "Expired",
+          "comsumption": null,
+          "flag": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Flag_of_Italy.svg/300px-Flag_of_Italy.svg.png",
+          "country": "Italia"
+        }
+    ]
+}
