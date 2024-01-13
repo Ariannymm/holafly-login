@@ -4,8 +4,10 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./Routes/Login";
 import Home from "./Routes/Home";
 import "./index.css"
-//import ProtectedRoute from "./Routes/ProtectedRoute";
+import ProtectedRoute from "./Routes/ProtectedRoute";
 import { AuthProvider } from "./Auth/AuthProvider";
+//import axios from "axios";
+
 
 const router = createBrowserRouter([
     {
@@ -13,8 +15,14 @@ const router = createBrowserRouter([
         element: <Login />,    
     },
     {
-        path: "/home",
-        element: <Home />,
+        path: "/",
+        element: <ProtectedRoute />,
+        children: [
+            {
+                path: "/home",
+                element: <Home />,    
+            },
+        ],
     },
 ]);
 

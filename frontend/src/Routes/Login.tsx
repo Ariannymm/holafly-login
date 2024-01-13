@@ -37,9 +37,6 @@ export default function Login() {
                 const json = (await response.json()) as AuthResponse;
                 console.log(json);
 
-                /*if (json.body.accessToken && json.body.refreshToken) {
-                    auth.saveUser(json);
-                }*/
             } else {
                 console.log("Something went wrong");
                 const json = await response.json() as AuthResponseError;
