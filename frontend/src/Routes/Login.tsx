@@ -1,46 +1,92 @@
-import DefaultLayout from "../Layouts/DefaultLayout";
-import Card from "../Components/Card/card";
 import { useState } from "react";
+import DefaultLayout from "../Layouts/DefaultLayout";
 import { useAuth } from "../Auth/AuthProvider";
 import { Navigate } from "react-router-dom";
+import { API_URL } from "../Auth/constants";
+import ButtonBase from "../Components/buttons/ButtonBase";
+import { AuthResponse, AuthResponseError } from "../Types/types";
 
 export default function Login() {
-    const [ username, setUsername] = useState("");
+    const [ email, setEmail] = useState("");
     const [ password, setPassword] = useState("");
+    const [errorResponse, setErrorResponse] = useState("");
+
     const auth = useAuth();
 
+    function handleChange(e: React.ChangeEvent) {
+        const { name, value } = e.target as HTMLInputElement;
+        if (name === "email") {
+          setEmail(value);
+        }
+        if (name === "password") {
+          setPassword(value);
+        }
+    }
+
+    async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+        e.preventDefault();
+
+        try {
+            const response = await fetch(`${API_URL}/login`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password }),
+            })
+              
+            if (response.ok) {
+                const json = (await response.json()) as AuthResponse;
+                console.log(json);
+
+                /*if (json.body.accessToken && json.body.refreshToken) {
+                    auth.saveUser(json);
+                }*/
+            } else {
+                console.log("Something went wrong");
+                const json = await response.json() as AuthResponseError;
+                setErrorResponse(json.body.error);
+                return;
+            }
+        } catch (error) {
+            console.log(error);
+        }
+        
+    }
+    
     if(auth.isAuthenticated) {
         return <Navigate to="/home" />;
     }
 
     return (
         <DefaultLayout>
-            <Card>
-                <form className="px-6 py-8 flex flex-col justify-between gap-3">
+            <div className="container max-w-md m-2 shadow-xl shadow-gray-300 rounded-xl flex flex-col justify-between gap-3">
+                <form onSubmit={handleSubmit} className="px-6 py-8 flex flex-col justify-between gap-3">
                     <h1 className="text-lg text-gray-700 font-medium text-center">Log in</h1>
                     <div className="flex flex-col w-full">
                         <label className="ml-5 py-1 items-center text-gray-600 font-medium text-sm transition-all duration-200 ease-in-out">Email</label>
                         <input 
-                            className="bg-transparent px-5 py-3 w-full border border-neutral-300 rounded-xl outline-none text-sm text-black font-normal" 
+                            className="bg-transparent px-5 py-3 w-full border border-neutral-300 focus:border-neutral-400 rounded-xl outline-none text-sm text-black font-normal" 
                             placeholder="Enter your email"
+                            name="email"
                             type="text" 
-                            value={username}
-                            onChange={(e) => setUsername(e.target.value)}
+                            value={email}
+                            onChange={handleChange}
                         />
                     </div>
                     <div className="flex flex-col w-full mb-3">
                         <label className="ml-5 py-1 items-center text-gray-600 font-medium text-sm transition-all duration-200 ease-in-out">Password</label>
                         <input 
-                            className="bg-transparent px-5 py-3 w-full border border-neutral-300 rounded-xl outline-none text-sm text-black font-normal" 
-                            placeholder="Enter your password"
+                            className="bg-transparent px-5 py-3 w-full border border-neutral-300 focus:border-neutral-400 rounded-xl outline-none text-sm text-black font-normal" 
+                            placeholder="Enter your password" 
                             type="password" 
                             value={password}
-                            onChange={(e) => setPassword(e.target.value)} 
+                            name="password"
+                            onChange={handleChange}
                         />
                     </div>
-                    <button className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 rounded-xl px-5 py-3 w-full text-sm text-white font-medium">Log in</button>
+                    <ButtonBase className="bg-gradient-to-r from-red-400 to-red-500 hover:from-red-500 hover:to-red-600 text-white">Log in</ButtonBase>
+                    {!!errorResponse && <div className="py-2 text-xs text-red font-normal">{errorResponse}</div>}
                 </form>
-            </Card>
+            </div>
         </DefaultLayout>
     );
 }
